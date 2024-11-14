@@ -1,14 +1,31 @@
-## **Bus Tracker**
+# Bus Tracker 🚌
 
-Sajt je predvidjen za pracenje autobuskih tura. Moguce je startovati turu tako sto se popune odgovarajuci podaci u gornjem levom delu sajta i klikom na dugme **Start tour**. Nakon klika pocece simulacija ture koja moze, zajedno sa prethodnim turama, da se prikaze odabirom tipa ture i godine koje je ta tura pokrenuta.
+## Introduction 🚀
+Welcome to the **Bus Tracker** application, the ultimate tool for real-time monitoring of bus tours. Designed to streamline operations and enhance tracking accuracy, Bus Tracker enables users to initiate and monitor bus tours with live data updates.
 
-Nakon sto se prikazu ture odredjenog tipa i iz zadate godine, postoji mogucnost klika na bilo koju od njih. Nakon klika ce se prikazati dodatni podaci kao sto su: **Fuel**, **Idling time**, **Speed** i **Location**, koji se beleze na svake 5 sekunde i simuliraju prikupljanje podataka sa senzora u vozilu.
+## Features 🌟
 
-Partition key za dostave je TourDescription i year. TourDescription je odabran zato sto je parametar po kojem bi se najcesce vrsila pretraga, kao i godina u kojoj je dostava izrvrsena. Godina takodje ogranicava rast particije.
+### Start Tour
+Launch a new bus tour by filling out the necessary information in the top left corner of the site and clicking the **Start Tour** button. This initiates the tour simulation.
 
-Clustering key za dostave je departing time i tour id. Particija je sortirana po departing time-u a tour id cini kljuc jedinstevnim.
+### Tour Simulation
+Continuously tracks simulated data such as **Fuel**, **Idling Time**, **Speed**, and **Location**, which updates every 5 seconds to mimic real sensor data.
 
-Za **Fuel**, **Idling time**, **Speed** i **Location** partition key je tour id, a clusterin key je reading time.
+### Historical Data
+Filter and view past tours by selecting the tour type and year. Click on any listed tour to view detailed data collected during that tour.
 
-**VAZNO**
-Baza je u cloudu i postoji mogucnost da ce da se pauzira posto je baza besplatna.
+### Database Design
+- **Partition Key**: `TourDescription` and `year` for effective data organization and retrieval.
+- **Clustering Key**: `departing time` and `tour id`, ensuring data is sorted by departure time and uniquely identified by tour ID.
+
+## Technologies Used ⚙️
+Bus Tracker utilizes a sophisticated database schema to manage and simulate bus tour data efficiently.
+
+### Partition Key for Tour Data
+Optimized for frequent searches by `TourDescription` and filtering by `year`.
+
+### Clustering Key for Deliveries
+Organizes deliveries by `departing time` and ensures uniqueness with `tour id`.
+
+### Sensor Data Keys
+For **Fuel**, **Idling Time**, **Speed**, and **Location** data, `tour id` serves as the partition key, while `reading time` is the clustering key.
